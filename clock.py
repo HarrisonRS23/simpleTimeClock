@@ -1,14 +1,34 @@
 import tkinter as tk
-# importing strftime function to
-# retrieve system's time
 from time import strftime
+import datetime
+import calendar
 
 # creating tkinter window
 root = tk.Tk()
 
 root.geometry("500x500")
 root.title("Time Clock")
-root.resizable(width=False, height=False)
+
+# Get the current date
+current_date = datetime.datetime.now()
+
+# Extract day, month, and year
+day = current_date.day
+month = current_date.month
+year = current_date.year
+
+# Convert month number to its name
+month_name = calendar.month_name[month]
+
+# Convert day number to its ordinal form (e.g., 1 -> 1st, 2 -> 2nd, etc.)
+if 4 <= day <= 20 or 24 <= day <= 30:
+    suffix = "th"
+else:
+    suffix = ["st", "nd", "rd"][day % 10 - 1]
+
+# Display the date in words
+date_in_words = f" {month_name} {day}{suffix} {year}"
+print("Date in words:", date_in_words)
 
 
 # This function is used to
@@ -23,11 +43,17 @@ def time():
 # will look more attractive
 timeLbl = tk.Label(root, font=('Helvetica', 40, 'bold'), foreground='white')
 titleLBl = tk.Label(root,font=('Helvetica', 20, 'bold'), text='Simple Digital Clock', foreground='white')
+dateLbLbl = tk.Label(root,font=('Helvetica', 30, 'bold'), foreground='white', text=date_in_words)
 
 # Placing clock at the centre
 # of the tkinter window
-titleLBl.pack(padx=5,pady=5)
-timeLbl.pack(padx=40, pady=40)
+titleLBl.pack()
+timeLbl.pack(pady=25)
+dateLbLbl.pack(pady=30)
 time()
 
 root.mainloop()
+
+
+
+
