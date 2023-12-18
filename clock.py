@@ -6,8 +6,9 @@ import calendar
 # creating tkinter window
 root = tk.Tk()
 
-root.geometry("500x500")
+root.geometry("350x350")
 root.title("Time Clock")
+militaryTime = False
 
 # Get the current date
 current_date = datetime.datetime.now()
@@ -34,7 +35,11 @@ print("Date in words:", date_in_words)
 # This function is used to
 # display time on the label
 def time():
-    string = strftime('%H:%M:%S %p')
+    if militaryTime:
+        string = strftime('%H:%M:%S %p')
+    else:
+        string = strftime('%I:%M:%S %p')  # %I for 12-hour format, %p for AM/PM
+
     timeLbl.config(text=string)
     timeLbl.after(1000, time)
 
