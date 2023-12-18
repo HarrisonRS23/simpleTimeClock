@@ -44,21 +44,27 @@ def time():
     timeLbl.after(1000, time)
 
 
+def button_click():
+    # Action to perform when the button is clicked
+    global militaryTime
+    militaryTime = not militaryTime  # set military time to opposite of what it is
+
+
 # Styling the label widget so that clock
 # will look more attractive
 timeLbl = tk.Label(root, font=('Helvetica', 40, 'bold'), foreground='white')
-titleLBl = tk.Label(root,font=('Helvetica', 20, 'bold'), text='Simple Digital Clock', foreground='white')
-dateLbLbl = tk.Label(root,font=('Helvetica', 30, 'bold'), foreground='white', text=date_in_words)
+titleLBl = tk.Label(root, font=('Helvetica', 20, 'bold'), text='Simple Digital Clock', foreground='white')
+dateLbLbl = tk.Label(root, font=('Helvetica', 30, 'bold'), foreground='white', text=date_in_words)
 
 # Placing clock at the centre
 # of the tkinter window
 titleLBl.pack()
 timeLbl.pack(pady=25)
 dateLbLbl.pack(pady=30)
+# Create a button
+button = tk.Button(root, text="Switch Time Format", command=button_click)
+button.pack(pady=10)
+
 time()
 
 root.mainloop()
-
-
-
-
