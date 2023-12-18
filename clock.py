@@ -48,6 +48,7 @@ def button_click():
     # Action to perform when the button is clicked
     global militaryTime
     militaryTime = not militaryTime  # set military time to opposite of what it is
+    time()  # call time again to ensure quick switches
 
 
 # Styling the label widget so that clock
